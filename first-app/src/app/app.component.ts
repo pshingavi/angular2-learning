@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <h1>{{title}}</h1>
     <app-other></app-other>
+    <app-another></app-another>
   `,
   //templateUrl: './app.component.html',
   //styleUrls: ['./app.component.css']
