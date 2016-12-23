@@ -1,9 +1,14 @@
+import { Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <h1>{{title}}</h1>
+  `,
+  //templateUrl: './app.component.html',
+  //styleUrls: ['./app.component.css']
+  styles: [`h1 {color:red;}`]
 })
 export class AppComponent {
   title = 'This is so cool!';
