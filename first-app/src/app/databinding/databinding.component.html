@@ -10,3 +10,8 @@
 <p [ngClass]="{redBorder: boolRetmethod()}">This is styled by using directive property binding with ngClass=boolRetmethod()</p>
 
 <p [ngStyle]="{color: 'green'}">This is style directive property binding</p>
+
+<h1>Custom Property Binding</h1>
+<app-prop-binding [result]="20"></app-prop-binding>
+<h1>Event Binding</h1>
+<app-event-binding (clicked)="onClicked($event)"></app-event-binding>

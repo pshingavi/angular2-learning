@@ -11,4 +11,11 @@ export class DatabindingComponent {
   boolRetmethod() {
     return true;
   }
+
+/**
+ * Method to listen to `clicked` EventEmitter defined in the child component EventDataBinding
+ */
+  onClicked(value: string) {
+    alert(value);
+  }
 }
