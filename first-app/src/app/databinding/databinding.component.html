@@ -1,3 +1,12 @@
-<p>
+<h1>String Interpolation</h1><p>
   {{stringInterpolation}} and number is {{numberInterpolation}}
 </p>
+<hr>
+<h1>Property Binding</h1>
+<input type="text" value="{{stringInterpolation}}">
+<input type="text" [value]="numberInterpolation">
+<p [ngClass]="{redBorder: false}">Not styled</p>
+<p [ngClass]="{redBorder: true}">This is styled by using directive property binding</p>
+<p [ngClass]="{redBorder: boolRetmethod()}">This is styled by using directive property binding with ngClass=boolRetmethod()</p>
+
+<p [ngStyle]="{color: 'green'}">This is style directive property binding</p>
