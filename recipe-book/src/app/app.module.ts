@@ -4,10 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { RecipeBookComponent } from './recipe-book.component';
+import { HeaderComponent } from './header.component';
 
 @NgModule({
   declarations: [
-    RecipeBookComponent
+    RecipeBookComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
