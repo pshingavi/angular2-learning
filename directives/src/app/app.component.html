@@ -5,4 +5,6 @@
 <div [ngStyle]="{'background-color': 'blue'}">ngStyle</div>
 <hr>
 <h2>Custom Attribute Directive</h2>
-<div highlight>Highlight directive effect</div>
+<div highlight [highlightColor]="'yellow'" [defaultColor]="'white'">Highlight directive yellow effect</div>
+<div highlight [defaultColor]="'blue'">Highlight directive red effect</div>
+<div highlight>Default</div>
