@@ -3,9 +3,9 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-user',
   template: `
-    <p>
-      user Works!
-    </p>
+    <h1>user Component</h1>
+    <a [routerLink]="['user']">User</a>
+    <a [routerLink]="['../']">Home</a>
   `,
   styles: []
 })
