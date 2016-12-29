@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { CmpAComponent } from './cmp-a.component';
-import { CmpBComponent } from './cmp-b.component';
+import { CmpAComponent } from './services/cmp-a.component';
+import { CmpBComponent } from './services/cmp-b.component';
 
 @NgModule({
   declarations: [
