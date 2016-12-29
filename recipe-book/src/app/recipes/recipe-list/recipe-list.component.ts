@@ -7,11 +7,16 @@ import { Component, OnInit, Output } from '@angular/core';
   templateUrl: './recipe-list.component.html'
 })
 export class RecipeListComponent implements OnInit {
-  recipes: Recipe[] = [];  // Empty at begining
-  // Let's create dummy recipe to test UI immediately
-  dummyRecipe = new Recipe("Dummy","Dummy description",
-  "http://foodnetwork.sndimg.com/content/dam/images/food/fullset/2007/4/4/0/ip0202_fudge.jpg.rend.sni12col.landscape.jpeg");
-
+  recipes: Recipe[] = [
+    new Recipe("Dum Biryani","Best rice biryani - Veg",
+  "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQXzzZPlu2EyusjqdnbWt948Loq564ajoG0i56GGmta8N6Zct0X", []),
+  new Recipe("Masala Dosa","The South Indian taste",
+  "http://newyorkstreetfood.com/wp-content/uploads/2013/03/maxresdefault-15.jpg", []),
+  new Recipe("Triple Shezwan Noodles","Indo-Chinese plate",
+  "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSAqkg5aR4S014ChQ8OIU2rgmLgumA2XNHK0c5iDdOVny0v9v5d", []),
+  new Recipe("Chai","Wake up Tea",
+  "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTEg8C-7smd9cO-B-_t94PvJlEjCy9SWjugaRTfdGytRej1WD6daw", [])
+  ];  // Empty at begining
   // Custom event
   @Output() recipeSelected = new EventEmitter<Recipe>();
 
