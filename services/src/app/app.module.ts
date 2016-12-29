@@ -18,7 +18,7 @@ import { CmpBComponent } from './services/cmp-b.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [],  // Here is the place to add providers shared by all other classes. ONE INSTANCE ONLY
   bootstrap: [AppComponent]
 })
 export class AppModule { }
