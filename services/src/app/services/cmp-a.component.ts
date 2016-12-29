@@ -40,4 +40,8 @@ export class CmpAComponent {
     // With slice we limit the list to show live update.
     this.items = this.dataService.getData().slice(0);
   }
+
+  onSend(value: string) {
+    this.dataService.pushData(value);
+  }
 }

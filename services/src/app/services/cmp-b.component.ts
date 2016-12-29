@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
       <input type="text" #input>  <!--local variable #input-->
       <button (click)="onLog(input.value)">Log</button>
       <button (click)="onStore(input.value)">Store</button>
-      <button (click)="onSend(input.value)">Send</button>
     </div>
     <hr>
     <div>
@@ -24,8 +23,9 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
-export class CmpBComponent {
-private items: string[] = [];
+export class CmpBComponent implements OnInit {
+  private value: string = '';
+  private items: string[] = [];
   constructor(private logService: LogService, private dataService: DataService) {}  // This alone doesn't get access to the LogService class. See providers meta-data above that tells angular to get an instance of the service class.
 
   onLog(value: string) {
@@ -40,4 +40,15 @@ private items: string[] = [];
     // With slice we limit the list to show live update.
     this.items = this.dataService.getData().slice(0);
   }
+
+  ngOnInit() {
+    this.dataService.pushDataEmitter.subscribe(
+      // multiple callbacks
+      // when data is emitted. Look at ES6 for below
+      data => {
+        this.value = data;
+      }
+    );
+  }
+
 }
