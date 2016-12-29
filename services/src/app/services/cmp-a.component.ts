@@ -1,3 +1,4 @@
+import { DataService } from './data.service';
 import { LogService } from './log.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -25,9 +26,19 @@ import { Component, OnInit } from '@angular/core';
   providers: [LogService] // This tells angular to provide an instance of the class LogService
 })
 export class CmpAComponent {
-  constructor(private logService: LogService) {}  // This alone doesn't get access to the LogService class. See providers meta-data above that tells angular to get an instance of the service class.
+  private items: string[] = [];
+  constructor(private logService: LogService, private dataService: DataService) {}  // This alone doesn't get access to the LogService class. See providers meta-data above that tells angular to get an instance of the service class.
 
   onLog(value: string) {
     this.logService.writeToLog(value);
+  }
+
+  onStore(value: string) {
+    this.dataService.addData(value);
+  }
+
+  onGet() {
+    // With slice we limit the list to show live update.
+    this.items = this.dataService.getData().slice(0);
   }
 }
