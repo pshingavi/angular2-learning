@@ -8,3 +8,8 @@
 <div highlight [highlightColor]="'yellow'" [defaultColor]="'white'">Highlight directive yellow effect</div>
 <div highlight [defaultColor]="'blue'">Highlight directive red effect</div>
 <div highlight>Default</div>
+<hr>
+<h1>Structural Directives</h1>
+<h2>*ngIf</h2>
+<div *ngIf="switch">Conditional Text</div>
+<button (click)="onSwitch()">Toggle switch</button>
