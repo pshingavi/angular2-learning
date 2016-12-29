@@ -22,8 +22,7 @@ import { Component, OnInit } from '@angular/core';
         <p>{{value}}</p>
     </div>
   `,
-  styles: [],
-  providers: [LogService] // This tells angular to provide an instance of the class LogService
+  styles: []
 })
 export class CmpAComponent {
   private items: string[] = [];

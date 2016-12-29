@@ -1,3 +1,4 @@
+import { LogService } from './services/log.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -18,7 +19,7 @@ import { CmpBComponent } from './services/cmp-b.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],  // Here is the place to add providers shared by all other classes. ONE INSTANCE ONLY
+  providers: [LogService],  // Here is the place to add providers shared by all other classes. ONE INSTANCE ONLY
   bootstrap: [AppComponent]
 })
 export class AppModule { }
