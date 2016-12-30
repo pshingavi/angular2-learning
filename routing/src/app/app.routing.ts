@@ -1,3 +1,4 @@
+import { USER_ROUTES } from './user/user.routes';
 import { UserComponent } from './user/user.component';
 import { HomeComponent } from './home.component';
 import {Routes, RouterModule} from "@angular/router"
@@ -7,7 +8,7 @@ const APP_ROUTES: Routes = [
   // First let's have route for home Component
   { path: '', component: HomeComponent },  // localhost:4200
   // User component
-  { path: 'user/:id', component: UserComponent}  // localhost:4200/user
+  { path: 'user/:id', component: UserComponent, children: USER_ROUTES}  // localhost:4200/user/1
 ];
 
 // Register the routes to the RouterModule and export to the root
