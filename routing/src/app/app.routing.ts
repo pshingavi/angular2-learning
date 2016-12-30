@@ -7,7 +7,7 @@ const APP_ROUTES: Routes = [
   // First let's have route for home Component
   { path: '', component: HomeComponent },  // localhost:4200
   // User component
-  { path: 'user', component: UserComponent}  // localhost:4200/user
+  { path: 'user/:id', component: UserComponent}  // localhost:4200/user
 ];
 
 // Register the routes to the RouterModule and export to the root
