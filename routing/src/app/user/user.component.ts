@@ -27,7 +27,7 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   onNavigate() {
-    this.router.navigate(['/'], {queryParams: {'analytics': 100}});
+    this.router.navigate(['/'], {queryParams: {'analytics': 100}, fragment: 'section1', preserveFragment: true, preserveQueryParams: true});
   }
 
   ngOnDestroy() {
