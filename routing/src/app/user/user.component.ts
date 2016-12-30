@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-user',
   template: `
     <h1>user Component</h1>
-    <a [routerLink]="['/user']">User</a>
     <h2>Imperative Routing</h2>
     <button (click)="onNavigate()">Go Home</button>
+    <hr>
+    {{id}}
   `,
   styles: []
 })
 export class UserComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  private id: string;
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.id = activatedRoute.snapshot.params['id'];
+  }
 
   ngOnInit() {
   }
