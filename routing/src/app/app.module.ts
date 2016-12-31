@@ -1,3 +1,4 @@
+import { UserEditGuard } from './user/user-edit.guard';
 import { UserDetailGuard } from './user/user-detail.guard';
 import { ConfiguredRouting } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,7 +25,7 @@ import { UserEditComponent } from './user/user-edit.component';
     BrowserModule,
     ConfiguredRouting
   ],
-  providers: [UserDetailGuard],
+  providers: [UserDetailGuard, UserEditGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
