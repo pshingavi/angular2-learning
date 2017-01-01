@@ -1,7 +1,6 @@
 import { RecipeService } from './../recipe.service';
-import { EventEmitter } from '@angular/common/src/facade/async';
 import { Recipe } from './../recipe';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'rb-recipe-list',
@@ -9,8 +8,6 @@ import { Component, OnInit, Output } from '@angular/core';
 })
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[] = [];  // Fetch using the RecipeService
-  // Custom event
-  @Output() recipeSelected = new EventEmitter<Recipe>();
 
   constructor(private recipeService: RecipeService) { }  // Provider of the recipeService is in recipe-book component
 
@@ -18,8 +15,8 @@ export class RecipeListComponent implements OnInit {
     this.recipes = this.recipeService.getRecipes();
   }
 
-  onSelected(recipe: Recipe) {
-    this.recipeSelected.emit(recipe);
-  }
+ // onSelected(recipe: Recipe) {
+   // this.recipeSelected.emit(recipe);
+ // }
 
 }

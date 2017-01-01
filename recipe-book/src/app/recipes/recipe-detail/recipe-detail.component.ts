@@ -1,6 +1,6 @@
 import { RecipeService } from './../recipe.service';
 import { Subscription } from 'rxjs/Rx';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ShoppingListService } from '../../shopping-list/shopping-list.service';
 import { Recipe } from './../recipe';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
@@ -16,7 +16,8 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
   constructor(private shoppingListService: ShoppingListService,
   private activatedRoute: ActivatedRoute,
-  private recipeService: RecipeService) { }
+  private recipeService: RecipeService,
+  private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.activatedRoute.params.subscribe(
@@ -34,6 +35,15 @@ export class RecipeDetailComponent implements OnInit, OnDestroy {
 
   onAddToShoppingList() {
     this.shoppingListService.addItems(this.selectedRecipe.ingredients);
+  }
+
+  onDelete() {
+    this.recipeService.deleteRecipe(this.selectedRecipe);
+    this.router.navigate(['/recipes']);
+  }
+
+  onEdit() {
+    this.router.navigate(['/recipes', this.recipeIndex, 'edit']);
   }
 
 }
