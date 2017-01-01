@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class RecipeItemComponent implements OnInit {
   @Input() recipe: Recipe;  // This is binded from outsite. Here from the recipe-list component
-  recipeId: number;
+  @Input() recipeId: number;
 
   constructor() { }
 
