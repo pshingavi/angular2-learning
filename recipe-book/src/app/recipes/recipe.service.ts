@@ -29,7 +29,11 @@ export class RecipeService {
 
   constructor() { }
 
-  getRecipe() {
+  getRecipes() {
     return this.recipes;
+  }
+
+  getRecipe(id: number) {
+    return this.recipes[id];
   }
 }
