@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateDrivenComponent implements OnInit {
 
+  onSubmit() {
+    console.log("Would be nice to have access to the form here!");
+  }
   constructor() { }
 
   ngOnInit() {
