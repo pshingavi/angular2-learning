@@ -11,10 +11,15 @@ import { Component, OnInit } from '@angular/core';
   `]
 })
 export class TemplateDrivenComponent implements OnInit {
+  user = {
+    username: 'pshingavi',
+    email: 'pshingavi@xyz.com',
+    password: 'test'
+  };
 
   onSubmit(form: NgForm) {
     console.log("Got access to the form object");
-    console.log(form);
+    console.log(this.user);
   }
   constructor() { }
 
