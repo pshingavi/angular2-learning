@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TemplateDrivenComponent implements OnInit {
 
-  onSubmit() {
-    console.log("Would be nice to have access to the form here!");
+  onSubmit(form: NgForm) {
+    console.log("Got access to the form object");
+    console.log(form);
   }
   constructor() { }
 
