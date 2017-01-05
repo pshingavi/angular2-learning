@@ -1,4 +1,4 @@
-import { FormControl, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,9 +11,9 @@ export class DataDrivenComponent implements OnInit {
 
   genders = ['male','female'];
 
-  constructor() {
+  constructor(private formBuilder: FormBuilder) {
     // For heavy lifting do this in ngOnInit
-    this.myForm = new FormGroup({
+    /**this.myForm = new FormGroup({
       'userData': new FormGroup({
         'username': new FormControl('pshingavi', Validators.required),// Key can be non quoted but to avoid minification errors or use special chars, use quotes
         'email': new FormControl('', [Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]),
@@ -23,7 +23,21 @@ export class DataDrivenComponent implements OnInit {
       'hobbies': new FormArray([
         new FormControl('Cooking')  // Angular attaches indexes starting 0
       ])
+    });**/
+
+    this.myForm = formBuilder.group({
+      'userData': formBuilder.group({
+        'username': ['pshingavi', Validators.required],// Key can be non quoted but to avoid minification errors or use special chars, use quotes
+        'email': ['', [Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]],
+      }),
+      'password': ['', Validators.required],
+      'gender': ['male'],
+      'hobbies': formBuilder.array([
+        ['Cooking', Validators.required]  // Angular attaches indexes starting 0
+      ])
     });
+
+
   }
 
   onSubmit() {
