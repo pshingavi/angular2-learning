@@ -22,7 +22,7 @@ export class TemplateDrivenComponent implements OnInit {
 
   onSubmit(form: NgForm) {
     console.log("Got access to the form object");
-    console.log(form.value);
+    console.log(form);
   }
   constructor() { }
 
