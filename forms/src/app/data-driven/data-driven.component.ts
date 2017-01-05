@@ -30,6 +30,10 @@ export class DataDrivenComponent implements OnInit {
     console.log(this.myForm);
   }
 
+  onAddHobby() {
+    (<FormArray>this.myForm.controls["hobbies"]).push(new FormControl('', Validators.required));
+  }
+
   ngOnInit() {
   }
 
