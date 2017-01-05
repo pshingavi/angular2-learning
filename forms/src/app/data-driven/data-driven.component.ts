@@ -1,3 +1,4 @@
+import { FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,8 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class DataDrivenComponent implements OnInit {
+  myForm: FormGroup;  // Make it more useful. See constructor
 
-  constructor() { }
+  constructor() {
+    // For heavy lifting do this in ngOnInit
+    this.myForm = new FormGroup({
+      'username': new FormControl(),// Key can be non quoted but to avoid minification errors or use special chars, use quotes
+      'email': new FormControl(),
+      'password': new FormControl()
+    });
+  }
 
   ngOnInit() {
   }
