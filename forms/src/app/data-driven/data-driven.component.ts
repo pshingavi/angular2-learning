@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,9 +12,9 @@ export class DataDrivenComponent implements OnInit {
   constructor() {
     // For heavy lifting do this in ngOnInit
     this.myForm = new FormGroup({
-      'username': new FormControl(),// Key can be non quoted but to avoid minification errors or use special chars, use quotes
-      'email': new FormControl(),
-      'password': new FormControl()
+      'username': new FormControl('pshingavi', Validators.required),// Key can be non quoted but to avoid minification errors or use special chars, use quotes
+      'email': new FormControl('', [Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]),
+      'password': new FormControl('', Validators.required)
     });
   }
 
