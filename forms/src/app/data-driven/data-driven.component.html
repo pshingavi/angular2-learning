@@ -32,12 +32,12 @@
           <input type="radio" formControlName="gender" [value]="g">{{g}}
         </label>
     </div>
-    <div>
+    <div formArrayName="hobbies">
         <h3>Hobbies</h3>
         <div class="form-group">
           <label for="gender">Gender</label>
             <input type="text"
-                   class="form-control">
+                   class="form-control" formControlName="0">
         </div>
     </div>
     <button type="button" class="btn btn-default">Add Hobby</button>
