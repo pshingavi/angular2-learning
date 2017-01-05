@@ -27,7 +27,7 @@ export class DataDrivenComponent implements OnInit {
 
     this.myForm = formBuilder.group({
       'userData': formBuilder.group({
-        'username': ['pshingavi', Validators.required],// Key can be non quoted but to avoid minification errors or use special chars, use quotes
+        'username': ['pshingavi', [Validators.required, this.exampleValidator]],// Key can be non quoted but to avoid minification errors or use special chars, use quotes
         'email': ['', [Validators.required, Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]],
       }),
       'password': ['', Validators.required],
@@ -46,6 +46,13 @@ export class DataDrivenComponent implements OnInit {
 
   onAddHobby() {
     (<FormArray>this.myForm.controls["hobbies"]).push(new FormControl('', Validators.required));
+  }
+
+  exampleValidator(control: FormControl): {[s: string]: boolean} {
+    if(control.value == "Example") {
+      return {example: true};  // Invalidate the input
+    }
+    return null;
   }
 
   ngOnInit() {
