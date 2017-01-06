@@ -1,6 +1,7 @@
+import { EventEmitter } from '@angular/common/src/facade/async';
 import { ShoppingListService } from './shopping-list.service';
 import { Ingredient } from '../shared/ingredient';
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'rb-shopping-list-add',
@@ -9,6 +10,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
 export class ShoppingListAddComponent implements OnInit, OnChanges {
   @Input() item: Ingredient;  // Set by property binding or when isAdd mode. Set isAdd = false if sent from outside using property binding. Use onChanges hook for this
   isAdd: boolean = true;
+  @Output() cleared = new EventEmitter();
 
   constructor(private shoppingListService: ShoppingListService) { }
 
@@ -48,6 +50,7 @@ export class ShoppingListAddComponent implements OnInit, OnChanges {
 
   onClear() {
     this.isAdd = true;
+    this.cleared.emit(null);
   }
 
 }
