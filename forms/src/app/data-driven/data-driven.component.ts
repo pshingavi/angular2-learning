@@ -1,3 +1,7 @@
+import { setTimeout } from 'timers';
+import { resolve } from 'dns';
+import { Observable } from 'rxjs/Rx';
+import { Promise, reject } from 'Q';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -33,7 +37,7 @@ export class DataDrivenComponent implements OnInit {
       'password': ['', Validators.required],
       'gender': ['male'],
       'hobbies': formBuilder.array([
-        ['Cooking', Validators.required]  // Angular attaches indexes starting 0
+        ['Cooking', Validators.required, this.asyncExampleValidator]  // Angular attaches indexes starting 0
       ])
     });
 
@@ -45,7 +49,7 @@ export class DataDrivenComponent implements OnInit {
   }
 
   onAddHobby() {
-    (<FormArray>this.myForm.controls["hobbies"]).push(new FormControl('', Validators.required));
+    (<FormArray>this.myForm.controls["hobbies"]).push(new FormControl('', Validators.required, this.asyncExampleValidator));
   }
 
   exampleValidator(control: FormControl): {[s: string]: boolean} {
@@ -53,6 +57,24 @@ export class DataDrivenComponent implements OnInit {
       return {example: true};  // Invalidate the input
     }
     return null;
+  }
+
+  asyncExampleValidator(control: FormControl): Promise<any> | Observable<any> {
+    const promise = Promise<any>(
+      // function is Promise's arg that is executed, pass resolve and reject args to the function
+        (resolve, reject) => {
+          // function body
+          setTimeout(() => {
+            // execute function after 1500 ms to simulate server call
+            if(control.value == "Example") {
+              resolve({'invalid': true});
+            } else {
+              resolve(null);
+            }
+          }, 1500);
+        }
+      );
+      return promise;
   }
 
   ngOnInit() {
