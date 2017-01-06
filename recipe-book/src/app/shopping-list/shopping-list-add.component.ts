@@ -33,10 +33,21 @@ export class ShoppingListAddComponent implements OnInit, OnChanges {
     if(!this.isAdd) {
       // Edit
       this.shoppingListService.editItem(this.item, newIngredient);
+      this.onClear();
     } else {
       // Add
       this.item = newIngredient;
       this.shoppingListService.addItem(this.item);
     }
   }
+
+  onDelete() {
+    this.shoppingListService.deleteItem(this.item);
+    this.onClear();
+  }
+
+  onClear() {
+    this.isAdd = true;
+  }
+
 }
