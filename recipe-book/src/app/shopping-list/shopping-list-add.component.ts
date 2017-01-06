@@ -20,6 +20,7 @@ export class ShoppingListAddComponent implements OnInit, OnChanges {
     if(changes.item.currentValue === null) {
       // Initial state
       this.isAdd = true;
+      this.item = {name: null, amount: null};
     } else {
       this.isAdd = false;
     }

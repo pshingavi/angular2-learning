@@ -5,13 +5,13 @@
         <div class="col-sm-5 form-group">
           <label for="item-name">Name</label>
           <input type="text" id="item-name" required class="form-control"
-          ngModel required name="name">
+          [ngModel]="item.name" required name="name">
         </div>
 
         <div class="col-sm-2 form-group">
           <label for="item-amount">Amount</label>
           <input type="text" id="item-amount" required class="form-control"
-          ngModel required name="amount">
+          [ngModel]="item.amount" required name="amount">
         </div>
       </div>
       <div class="row">
