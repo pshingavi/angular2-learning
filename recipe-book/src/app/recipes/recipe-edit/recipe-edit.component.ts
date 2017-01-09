@@ -2,7 +2,7 @@ import { Recipe } from './../recipe';
 import { FormArray, FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs/Rx';
 import { RecipeService } from '../recipe.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
@@ -19,7 +19,8 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private recipeService: RecipeService,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private router: Router) { }
 
   ngOnInit() {
     // Extract the route params. Can be done in the constructor, but leave the heavy lifting here
@@ -37,9 +38,9 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
           this.isNew = true;
           this.recipe = null;
         }
+        this.initForm();
       }
     );
-    this.initForm();
   }
 
   ngOnDestroy() {
@@ -53,7 +54,6 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     let recipeContent = '';
     let recipeIngredients: FormArray = new FormArray([]);
     // If we are in edit mode then create the FormControls for each ingredient
-    console.log(this.isNew);
     if(!this.isNew) {
       for(let i=0; i<this.recipe.ingredients.length; i++) {
         recipeIngredients.push(
@@ -76,6 +76,26 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
       ingredients: recipeIngredients
     });
 
+  }
+
+  onSubmit() {
+    const newRecipe = this.recipeForm.value;
+    if(this.isNew) {
+      // Add new recipe
+      this.recipeService.addRecipe(newRecipe);
+    } else {
+      this.recipeService.editRecipe(this.recipe, newRecipe);
+    }
+    this.navigateBack();
+  }
+
+  onCancel() {
+    this.navigateBack();
+  }
+
+  private navigateBack() {
+    // Navigate back to starting position. Needs router
+    this.router.navigate(['../']);
   }
 
 }
