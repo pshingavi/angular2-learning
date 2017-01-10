@@ -1,0 +1,9 @@
+<app-dialog [title]="'Dialog Prompt'"
+  [template]="'This is our new Material Design based Component:'"
+  [placeHolder]="'Enter text here'"
+  [okText]="'Yes'"
+  [cancelText]="'No'"
+  [value]="'Starting Text'"
+  (valueEmitted)="log($event)"
+  [showPrompt]="true">
+</app-dialog>
