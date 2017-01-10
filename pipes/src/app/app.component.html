@@ -10,4 +10,7 @@
   <p>{{myValue | slice:3:7}}</p>
   <h3>Pipe chaining - splice and uppercase</h3>
   <p>{{myValue | slice:3:7 | uppercase}}</p>
+  <h2>Custom Pipe</h2>
+  <input type="text" #input (keyup)="0">
+  <p>{{input.value | double}}</p>
 </div>
