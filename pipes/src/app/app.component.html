@@ -3,4 +3,9 @@
   <h2>Built-in pipes</h2>
   <p>{{myValue | uppercase}}</p>
   <p>{{myDate | date}}</p>
+  <h3>Parameterizing pipes</h3>
+  <p>{{myDate | date:"MM/dd/yy"}}</p>
+  <p>{{myValue | slice:2}}</p>
+  <h3>Multiple arguments</h3>
+  <p>{{myValue | slice:3:7}}</p>
 </div>
