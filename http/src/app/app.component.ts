@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
         // callback 1 - data comes back
         (data: Response) => {
           console.log(data);
+          console.log(data.json());
         }
         // callback 2 - when error
         // callback 3 - complete request
