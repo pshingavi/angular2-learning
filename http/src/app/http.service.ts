@@ -19,6 +19,11 @@ export class HttpService {
     headers.append('Content-Type', 'application/json');
     return this.http.post('https://angular2-2e152.firebaseio.com/data.json', body, {headers: headers})  // return Observable post(url, body, options)
       .map((data: Response) => data.json());
-}
+  }
+
+  getOwnData() {
+    return this.http.get('https://angular2-2e152.firebaseio.com/data.json')  // returns an Observable
+      .map((response: Response) => response.json());  // Operator to transform response to js body object and return a new Observable
+  }
 
 }

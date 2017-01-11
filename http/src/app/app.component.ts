@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  items: any[];
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {  // Do heavy lifting here instead in the constructor
@@ -27,6 +28,20 @@ export class AppComponent implements OnInit {
       .subscribe(
         (data: any) => {
           console.log(data);
+        }
+      );
+  }
+
+  onGetData() {
+    this.httpService.getOwnData()
+      .subscribe(
+        (data) => {
+          // transform object into an arrray
+          const myArray = [];
+          for(let key in data) {
+            myArray.push(data[key]);
+          }
+          this.items = myArray;
         }
       );
   }
