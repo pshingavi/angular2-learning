@@ -21,4 +21,13 @@ export class AppComponent implements OnInit {
         // callback 3 - complete request
       );
   }
+
+  onSubmit(username: string, email:string) {
+    this.httpService.sendData({username: username, email: email})
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+        }
+      );
+  }
 }
