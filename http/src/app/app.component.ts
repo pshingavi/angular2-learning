@@ -14,9 +14,8 @@ export class AppComponent implements OnInit {
     this.httpService.getData()  // get observable
       .subscribe(  // tell angular to send request and listen
         // callback 1 - data comes back
-        (data: Response) => {
+        (data: any) => {
           console.log(data);
-          console.log(data.json());
         }
         // callback 2 - when error
         // callback 3 - complete request
