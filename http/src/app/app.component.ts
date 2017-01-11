@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   items: any[];
   constructor(private httpService: HttpService) {}
+  asyncString = this.httpService.getData();  // Used with async pipe
 
   ngOnInit() {  // Do heavy lifting here instead in the constructor
     this.httpService.getData()  // get observable
