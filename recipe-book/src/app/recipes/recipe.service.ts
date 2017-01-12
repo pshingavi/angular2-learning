@@ -1,12 +1,15 @@
+import { EventEmitter } from '@angular/common/src/facade/async';
 import { RecipesComponent } from './recipes.component';
 import { Headers, Http, Response } from '@angular/http';
 import { Ingredient } from './../shared/ingredient';
 import { Recipe } from './recipe';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import 'rxjs/Rx';
 
 @Injectable()
 export class RecipeService {
+  recipesChanged = new EventEmitter<Recipe[]>();
+
   recipes: Recipe[] = [
     new Recipe("Dum Biryani","Best rice biryani - Veg",
   "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQXzzZPlu2EyusjqdnbWt948Loq564ajoG0i56GGmta8N6Zct0X", [
@@ -66,6 +69,8 @@ export class RecipeService {
       .subscribe(
         (data: Recipe[]) => {
           this.recipes = data;
+          // Emit the EventEmitter for recipe change
+          this.recipesChanged.emit(this.recipes);  // Who is interested - see recipe list component by subscribing to this
         }
       );
   }
