@@ -1,4 +1,3 @@
-import { EventEmitter } from '@angular/common/src/facade/async';
 import { RecipesComponent } from './recipes.component';
 import { Headers, Http, Response } from '@angular/http';
 import { Ingredient } from './../shared/ingredient';
