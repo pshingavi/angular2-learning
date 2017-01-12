@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onFetchRecipes() {
-
+    this.recipeService.fetchData();
   }
 
 }

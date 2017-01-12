@@ -1,8 +1,9 @@
 import { RecipesComponent } from './recipes.component';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, Response } from '@angular/http';
 import { Ingredient } from './../shared/ingredient';
 import { Recipe } from './recipe';
 import { Injectable } from '@angular/core';
+import 'rxjs/Rx';
 
 @Injectable()
 export class RecipeService {
@@ -56,11 +57,17 @@ export class RecipeService {
     const headers = new Headers();
     headers.append('Content-Type','application/json');
     // Configure the Observable
-    return this.http.post('https://recipebook-50f9c.firebaseio.com/RecipesComponent.json', body, {headers: headers});
+    return this.http.put('https://recipebook-50f9c.firebaseio.com/RecipesComponent.json', body, {headers: headers});
   }
 
   fetchData() {
-
+    return this.http.get('https://recipebook-50f9c.firebaseio.com/RecipesComponent.json')
+      .map((response: Response) => response.json())  // Provide only data to the subscriber and not whole object
+      .subscribe(
+        (data: Recipe[]) => {
+          this.recipes = data;
+        }
+      );
   }
 
 }
