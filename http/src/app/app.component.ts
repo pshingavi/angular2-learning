@@ -29,7 +29,8 @@ export class AppComponent implements OnInit {
       .subscribe(
         (data: any) => {
           console.log(data);
-        }
+        },
+        error => console.log(error.json())  // Handle error in subscribe
       );
   }
 
