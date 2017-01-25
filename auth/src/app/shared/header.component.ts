@@ -7,9 +7,9 @@ import { Component } from "@angular/core";
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <ul class="nav navbar-nav">
-                        <li><a>Sign Up</a></li>
-                        <li><a>Sign In</a></li>
-                        <li><a>Protected</a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['signup']">Sign Up</a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['signin']">Sign In</a></li>
+                        <li><a routerLinkActive="active" [routerLink]="['protected']">Protected</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a>Logout</a></li>

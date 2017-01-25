@@ -1,3 +1,4 @@
+import { AppRouting } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,7 +22,8 @@ import { HeaderComponent } from './shared/header.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRouting
   ],
   providers: [],
   bootstrap: [AppComponent]
