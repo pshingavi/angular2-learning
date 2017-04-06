@@ -36,7 +36,22 @@ import { animate, Component, state, style, trigger, transition } from '@angular/
       })),
       transition('normal => highlighted', animate(200)),
       transition('highlighted => normal', animate(1200)),
-      transition('shrunken <=> *', animate(500))
+      /*transition('shrunken <=> *', animate(500, style({
+        // this instantly changes border and jumps to end state
+        borderRadius: '50px'
+      }))),*/
+      transition('shrunken <=> *', [
+        // Instant
+        style({
+          'background-color': 'orange'
+        }),
+        // in between transition
+        animate(1000, style({
+          'border-radius': '50px'
+        })),
+        // Before final state transformation
+        animate(500)  // Now transition to end state
+      ])
     ])
   ]
 })
