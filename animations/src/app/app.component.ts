@@ -1,4 +1,5 @@
-import { animate, Component, keyframes, state, style, transition, trigger } from '@angular/core';
+import { any } from 'codelyzer/util/function';
+import { animate, Component, group, keyframes, state, style, transition, trigger } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -66,14 +67,14 @@ import { animate, Component, keyframes, state, style, transition, trigger } from
           transform: 'translateX(-100px)'
         }),
         animate(300)
-        ]),
-        // Animate to delete
+      ]),
+      // Animate to delete
       transition('* => void', [
         animate(300, style({
           transform: 'translateX(100px)',
           opacity: 0
         }))
-        ])
+      ])
     ]),
     trigger('list2', [
       // Animation meta data - for our state value below
@@ -105,14 +106,19 @@ import { animate, Component, keyframes, state, style, transition, trigger } from
             offset: 1
           })
         ]))
-        ]),
-        // Animate to delete
+      ]),
+      // Animate to delete
       transition('* => void', [
-        animate(300, style({
-          transform: 'translateX(100px)',
-          opacity: 0
-        }))
+        group([  // All below animations at same time
+          animate(300, style({
+            color: 'red'
+          })),
+          animate(300, style({
+            transform: 'translateX(100px)',
+            opacity: 0
+          }))
         ])
+      ])
     ])
   ]
 })
@@ -136,5 +142,13 @@ export class AppComponent {
 
   onShrink() {
     this.wildState = 'shrunken';
+  }
+
+  animationStarted(event: any) {
+    console.log(event);
+  }
+
+  animationEnded(event: any) {
+    console.log(event);
   }
 }
