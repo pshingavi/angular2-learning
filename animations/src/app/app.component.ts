@@ -12,7 +12,7 @@ import { Component, state, style, trigger } from '@angular/core';
         transform: 'translateX(0)'
       })),
       state('highlighted', style({
-        backgroundColor: 'blue',
+        'background-color': 'blue',
         transform: 'translateX(100px)'
       }))
     ])
@@ -28,5 +28,9 @@ export class AppComponent {
 
   onDelete(item) {
     this.list.splice(this.list.indexOf(item), 1);
+  }
+
+  onAnimate() {
+    this.state = (this.state == 'normal') ? 'highlighted' : 'normal';
   }
 }
